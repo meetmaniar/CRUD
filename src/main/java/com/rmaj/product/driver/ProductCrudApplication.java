@@ -1,9 +1,14 @@
-package com.rmaj.product.crud;
+package com.rmaj.product.driver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+
 
 @SpringBootApplication
+@ComponentScan(basePackages={"com.rmaj.product.controller"})
+@ComponentScan(basePackages={"com.rmaj.product.configuration"})
+
 public class ProductCrudApplication {
 
 	public static void main(String[] args) {
