@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
@@ -40,7 +39,7 @@ public class SwaggerConfiguration {
 				"",
 				new Contact("Meet Maniar", null, "contact@meetmaniar.tech"),
 				"All Rights Reserved",
-				"http://meetmaniat.tech", Collections.emptyList()
+				"http://meetmaniat.tech", Collections.EMPTY_LIST
 				);
 	}
 }
