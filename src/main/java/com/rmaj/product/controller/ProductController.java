@@ -1,12 +1,9 @@
 package com.rmaj.product.controller;
 
-
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
+import org.everit.json.schema.Schema;
+import org.everit.json.schema.ValidationException;
+import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,29 +13,21 @@ import org.springframework.web.bind.annotation.RestController;
 import com.rmaj.product.util.ProductFeed;
 
 @RestController
-public class ProductController {
-	ClassLoader classLoader = getClass().getClassLoader();
-	File schemaFile = new File(classLoader.getResource("productSchema.json").getFile());
-	Path schemaPath = Paths.get(schemaFile.toURI());
-	String schemaContent = getSchemaContent();
+public class ProductController {	
+	@Autowired
+	Schema schema;
 	
-	@RequestMapping(value = "/addProductContent", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/addProductContent", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String helloWorld(@RequestBody String productPost) {
-		ProductFeed.generateFeed("productPost");	
-		return schemaContent;
-	}
-	private String getSchemaContent() {
-		
+		JSONObject returnStatusInJSON;
 		try {
-			String schemaContent = Files.readString(schemaPath);
-			System.out.println("*****************************");
-			System.out.println(schemaContent);
-			System.out.println("*****************************");
-			return schemaContent;
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			schema.validate(new JSONObject(productPost));
+			ProductFeed.generateFeed(productPost);
+			returnStatusInJSON = new JSONObject("{'status' : 'success'}");
+		} catch (ValidationException e) {
 			e.printStackTrace();
-			return "";
+			returnStatusInJSON = new JSONObject("{'status' : 'fail'}");
 		}
+		return returnStatusInJSON.toString();
 	}
 }

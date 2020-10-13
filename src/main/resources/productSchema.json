@@ -3,32 +3,41 @@
   "definitions": {},
   "Id": "Product Schema",
   "Product": {
-    "id": {
+    "Id": {
       "default": 1,
       "description": "Product ID",
-      "id": "/properties/id",
       "title": "The id schema",
       "type": "integer"
     },
-    "name": {
+    "Quantity":{
+    	"default": 1,
+    	"description": "Quantity of the Product",
+    	"title": "Quantity",
+    	"type": "integer"
+    },
+    "Name": {
       "default": "A green door",
       "description": "Product Name",
-      "id": "/properties/name",
       "title": "The name schema",
       "type": "string"
     },
-    "price": {
+    "Price": {
       "default": 12.5,
       "description": "Product Price",
-      "id": "/properties/price",
       "title": "The price schema",
       "type": "number"
+    },
+    "Token": {
+    	"description": "Token number",
+    	"title": "Token Number Schema",
+    	"type": "string"
     }
   },
-  "required": [
+  "Required": [
     "name",
     "id",
-    "price"
+    "price",
+    "token"
   ],
   "type": "object"
 }
