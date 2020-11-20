@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {},
+  "Id": "Product Schema",
+  "Product": {
+    "Id": {
+      "default": 1,
+      "description": "Product ID",
+      "title": "The id schema",
+      "type": "integer"
+    },
+    "Quantity":{
+    	"default": 1,
+    	"description": "Quantity of the Product",
+    	"title": "Quantity",
+    	"type": "integer"
+    },
+    "Name": {
+      "default": "A green door",
+      "description": "Product Name",
+      "title": "The name schema",
+      "type": "string"
+    },
+    "Price": {
+      "default": 12.5,
+      "description": "Product Price",
+      "title": "The price schema",
+      "type": "number"
+    },
+    "Token": {
+    	"description": "Token number",
+    	"title": "Token Number Schema",
+    	"type": "string"
+    }
+  },
+  "Required": [
+    "name",
+    "id",
+    "price",
+    "token"
+  ],
+  "type": "object"
+}
