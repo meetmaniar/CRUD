@@ -11,7 +11,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 class ProductCrudApplicationTests {
 
 	@Test
-	void contextLoads() {
+	void sampleTest_1() {
+		assertEquals(11, 11);
+	}
+	
+	@Test
+	void sampleTest_2() {
 		assertEquals(11, 11);
 	}
 
