@@ -30,4 +30,12 @@ public class ProductController {
 		}
 		return returnStatusInJSON.toString();
 	}
+	
+	@RequestMapping(value="/helloworld", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public String testHello() {
+		JSONObject returnStatement;
+		returnStatement = new JSONObject("{'Tests /helloworld' : 'success'}");
+		return returnStatement.toString();	
+		
+	}
 }
