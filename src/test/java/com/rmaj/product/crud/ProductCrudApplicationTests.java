@@ -12,7 +12,7 @@ class ProductCrudApplicationTests {
 
 	@Test
 	void sampleTest_1() {
-		assertEquals(11, 11);
+		assertEquals(11, 12);
 	}
 	
 	@Test
